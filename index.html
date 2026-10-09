@@ -173,7 +173,7 @@
     </style>
   </head>
   <body
-    class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white pb-28 md:pb-14"
+    class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white pb-36 md:pb-14"
   >
     <!-- Toast Notification Container -->
     <div
@@ -310,30 +310,31 @@
       </div>
     </div>
 
-    <!-- Main Header with Glassmorphism -->
+    <!-- Main Header with Glassmorphism (Mobile 2-Row Layout + Desktop 1-Row Layout) -->
     <header
-      class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/70 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)]"
+      class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)]"
     >
+      <!-- Top Row: Logo, Delivery Address, Account & Cart -->
       <div
         class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4"
       >
         <!-- Logo -->
         <div
           onclick="navigateTo('browsing')"
-          class="flex items-center space-x-2.5 cursor-pointer shrink-0 group"
+          class="flex items-center space-x-2 sm:space-x-2.5 cursor-pointer shrink-0 group"
         >
           <div
-            class="w-10 h-10 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white shadow-glow-emerald group-hover:scale-105 transition-all"
+            class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white shadow-glow-emerald group-hover:scale-105 transition-all"
           >
             <i
               data-lucide="zap"
-              class="w-5 h-5 fill-current text-amber-300"
+              class="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-current text-amber-300"
             ></i>
           </div>
           <div>
-            <div class="flex items-center space-x-1.5">
+            <div class="flex items-center space-x-1 sm:space-x-1.5">
               <span
-                class="text-xl sm:text-2xl font-black tracking-tight text-slate-900"
+                class="text-lg sm:text-2xl font-black tracking-tight text-slate-900"
               >
                 Blink<span class="text-brand-600">Fresh</span>
               </span>
@@ -378,8 +379,8 @@
           </div>
         </div>
 
-        <!-- Search Input with Voice Search & Mummy Ki Parchi Button -->
-        <div class="flex-1 max-w-xl relative flex items-center gap-2">
+        <!-- Search Input (Desktop view inline) -->
+        <div class="hidden sm:flex flex-1 max-w-xl relative items-center gap-2">
           <div class="relative flex-1 flex items-center">
             <i
               data-lucide="search"
@@ -414,71 +415,66 @@
           <!-- Mummy Ki Parchi (Smart List Parser Button) -->
           <button
             onclick="openParchiModal()"
-            class="hidden sm:flex items-center space-x-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs px-3 py-2.5 rounded-2xl shadow-sm transition shrink-0 active:scale-95"
+            class="hidden lg:flex items-center space-x-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs px-3 py-2.5 rounded-2xl shadow-sm transition shrink-0 active:scale-95"
             title="Paste shopping list / Mummy Ki Parchi"
           >
             <i data-lucide="file-text" class="w-4 h-4"></i>
-            <span class="hidden lg:inline">Smart List</span>
+            <span>Smart List</span>
           </button>
         </div>
 
-        <!-- Action Buttons -->
-        <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-          <!-- Mummy Ki Parchi Mobile Trigger -->
-          <button
-            onclick="openParchiModal()"
-            class="sm:hidden p-2 rounded-2xl bg-amber-100 text-amber-900 font-black text-xs"
-            title="Smart Grocery List"
-          >
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-          </button>
-
+        <!-- Header Action Buttons (Fully visible on Mobile & Desktop) -->
+        <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
+          <!-- Notifications Button -->
           <button
             onclick="toggleNotifications(true)"
-            class="relative p-2.5 rounded-2xl text-slate-600 hover:text-brand-700 hover:bg-slate-100/80 transition"
+            class="relative p-2 sm:p-2.5 rounded-2xl text-slate-600 hover:text-brand-700 hover:bg-slate-100 transition"
             title="Notifications"
           >
-            <i data-lucide="bell" class="w-5 h-5"></i>
+            <i data-lucide="bell" class="w-4.5 h-4.5 sm:w-5 sm:h-5"></i>
             <span
               id="unread-notif-dot"
-              class="absolute top-2 right-2 w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-white"
+              class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"
             ></span>
           </button>
 
+          <!-- 6 AM Milk Shortcut (Desktop) -->
           <button
             onclick="openAccount('subscriptions')"
-            class="relative hidden sm:flex items-center space-x-1.5 p-2 rounded-2xl hover:bg-emerald-50 text-brand-700 font-bold text-xs transition border border-emerald-200/60"
+            class="relative hidden lg:flex items-center space-x-1.5 p-2 rounded-2xl hover:bg-emerald-50 text-brand-700 font-bold text-xs transition border border-emerald-200/60"
             title="Morning 6 AM Subscriptions"
           >
             <i data-lucide="calendar" class="w-4 h-4"></i>
-            <span class="hidden lg:inline" id="nav-daily-sub-text"
-              >6 AM Milk</span
-            >
+            <span id="nav-daily-sub-text">6 AM Milk</span>
           </button>
 
+          <!-- ALWAYS VISIBLE PROMINENT ACCOUNT BUTTON -->
           <button
+            id="header-account-btn"
             onclick="openAccount('profile')"
-            class="flex items-center space-x-2 p-1.5 sm:px-3 sm:py-2 rounded-2xl hover:bg-slate-100/80 text-slate-700 font-bold text-xs transition border border-transparent hover:border-slate-200"
+            class="flex items-center space-x-1.5 bg-slate-100 hover:bg-emerald-50 active:bg-emerald-100 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-2xl text-slate-800 hover:text-brand-700 font-black text-xs transition border border-slate-200/80 shadow-xs"
+            title="My Account & Profile"
           >
             <div
               id="user-avatar-initial"
-              class="w-7 h-7 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 text-white flex items-center justify-center font-black text-xs shadow-xs"
+              class="w-6 h-6 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 text-white flex items-center justify-center font-black text-[11px] shadow-xs"
             >
               A
             </div>
             <span
-              class="hidden sm:inline font-bold text-slate-800"
+              class="font-extrabold text-slate-800 text-xs"
               id="nav-account-text"
               >Account</span
             >
           </button>
 
+          <!-- Cart Button -->
           <button
             onclick="toggleCart(true)"
-            class="relative bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-2xl shadow-glow-emerald flex items-center space-x-2 transition duration-150"
+            class="relative bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 active:scale-95 text-white font-extrabold text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-glow-emerald flex items-center space-x-1.5 sm:space-x-2 transition duration-150"
           >
             <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-            <span id="header-cart-text" class="hidden sm:inline">My Cart</span>
+            <span id="header-cart-text" class="hidden xs:inline">Cart</span>
             <span
               id="header-cart-badge"
               class="hidden bg-accent-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full shadow-xs"
@@ -486,6 +482,45 @@
             >
           </button>
         </div>
+      </div>
+
+      <!-- Mobile Dedicated Search Row (< sm screens) -->
+      <div class="sm:hidden px-3 pb-2.5 pt-0.5 flex items-center gap-2">
+        <div class="relative flex-1 flex items-center">
+          <i
+            data-lucide="search"
+            class="w-4 h-4 text-slate-400 absolute left-3.5 pointer-events-none"
+          ></i>
+          <input
+            id="mobile-search-input"
+            type="text"
+            placeholder='Search "Aloo", "Tamatar", "Milk"...'
+            oninput="
+              handleSearch(this.value);
+              document.getElementById('search-input').value = this.value;
+            "
+            class="w-full bg-slate-100/90 focus:bg-white text-xs pl-9 pr-14 py-2 rounded-2xl border border-slate-200/80 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10 outline-none transition placeholder:text-slate-400 font-medium"
+          />
+
+          <!-- Voice Search Mic Button -->
+          <button
+            onclick="triggerVoiceSearch()"
+            class="absolute right-2 text-brand-600 p-1.5 rounded-xl hover:bg-brand-50"
+            title="Search by voice"
+          >
+            <i data-lucide="mic" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Mummy Ki Parchi Mobile Button -->
+        <button
+          onclick="openParchiModal()"
+          class="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 p-2 rounded-2xl font-black text-xs shrink-0 shadow-xs flex items-center gap-1 active:scale-95"
+          title="Mummy Ki Parchi (Smart List)"
+        >
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span class="text-[10px] font-black">List</span>
+        </button>
       </div>
 
       <!-- Mobile Sub-Header: Delivery Address Pill -->
@@ -521,7 +556,7 @@
     <!-- Mobile Floating Cart Bar -->
     <div
       id="floating-mobile-cart-bar"
-      class="fixed bottom-4 inset-x-3 z-30 md:hidden hidden transition-all duration-300"
+      class="fixed bottom-20 inset-x-3 z-30 md:hidden hidden transition-all duration-300"
     >
       <div
         onclick="toggleCart(true)"
@@ -561,6 +596,85 @@
         </div>
       </div>
     </div>
+
+    <!-- Dedicated Mobile Bottom Navigation Bar (Blinkit / Zepto Style) -->
+    <nav
+      id="mobile-bottom-nav"
+      class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-xl border-t border-slate-200/90 py-1.5 px-2 flex items-center justify-around md:hidden shadow-[0_-4px_25px_rgba(0,0,0,0.08)]"
+    >
+      <!-- Home / Mandi -->
+      <button
+        onclick="navigateTo('browsing')"
+        class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-brand-700 active:scale-95 transition"
+      >
+        <div class="w-5 h-5 flex items-center justify-center">
+          <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+        </div>
+        <span class="text-[10px] font-black mt-0.5" id="bnav-home">Home</span>
+      </button>
+
+      <!-- Categories -->
+      <button
+        onclick="
+          filterByCategory('all');
+          window.scrollTo({ top: 350, behavior: 'smooth' });
+        "
+        class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-slate-500 hover:text-brand-700 active:scale-95 transition"
+      >
+        <div class="w-5 h-5 flex items-center justify-center">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+        </div>
+        <span class="text-[10px] font-bold mt-0.5" id="bnav-categories"
+          >Categories</span
+        >
+      </button>
+
+      <!-- Mummy Ki Parchi (Smart List) -->
+      <button
+        onclick="openParchiModal()"
+        class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-amber-600 hover:text-amber-700 active:scale-95 transition"
+      >
+        <div class="w-5 h-5 flex items-center justify-center relative">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span
+            class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse"
+          ></span>
+        </div>
+        <span class="text-[10px] font-extrabold mt-0.5" id="bnav-parchi"
+          >Smart List</span
+        >
+      </button>
+
+      <!-- 6 AM Milk Subscription -->
+      <button
+        onclick="openAccount('subscriptions')"
+        class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-slate-500 hover:text-brand-700 active:scale-95 transition"
+      >
+        <div class="w-5 h-5 flex items-center justify-center">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+        </div>
+        <span class="text-[10px] font-bold mt-0.5" id="bnav-milk"
+          >6 AM Milk</span
+        >
+      </button>
+
+      <!-- Account / Profile (Always prominent & accessible) -->
+      <button
+        onclick="openAccount('profile')"
+        class="flex flex-col items-center justify-center py-1 px-2 rounded-xl active:scale-95 transition group"
+      >
+        <div
+          class="w-5 h-5 rounded-full bg-gradient-to-tr from-brand-600 to-emerald-400 text-white flex items-center justify-center text-[10px] font-black shadow-xs ring-2 ring-brand-500/40"
+        >
+          A
+        </div>
+        <span
+          class="text-[10px] font-black mt-0.5 text-brand-700 font-mono uppercase"
+          id="bnav-account"
+          >Account</span
+        >
+      </button>
+    </nav>
 
     <!-- Mummy Ki Parchi (Smart Grocery List Parser Modal) -->
     <div
@@ -684,16 +798,16 @@
       </div>
     </div>
 
-    <!-- Account Drawer Modal -->
+    <!-- Account Drawer Modal (Highest Z-index z-[100] for mobile accessibility) -->
     <div
       id="account-drawer-modal"
-      class="fixed inset-0 z-50 overflow-hidden hidden"
+      class="fixed inset-0 z-[100] overflow-hidden hidden"
     >
       <div
         onclick="toggleAccount(false)"
         class="absolute inset-0 bg-slate-950/60 backdrop-blur-xs"
       ></div>
-      <div class="absolute inset-y-0 right-0 max-w-full flex pl-8">
+      <div class="absolute inset-y-0 right-0 max-w-full flex pl-4 sm:pl-8">
         <div
           class="w-screen max-w-md bg-white shadow-2xl flex flex-col border-l border-slate-100"
           id="account-drawer-container"
@@ -1894,16 +2008,40 @@
         const navAccount = document.getElementById("nav-account-text");
         const navDaily = document.getElementById("nav-daily-sub-text");
         const searchInp = document.getElementById("search-input");
+        const mobSearchInp = document.getElementById("mobile-search-input");
         const floatArr = document.getElementById("floating-cart-arrival-text");
         const floatBtn = document.getElementById("floating-cart-btn-text");
+        const bnavHome = document.getElementById("bnav-home");
+        const bnavCat = document.getElementById("bnav-categories");
+        const bnavParchi = document.getElementById("bnav-parchi");
+        const bnavMilk = document.getElementById("bnav-milk");
+        const bnavAcc = document.getElementById("bnav-account");
 
         if (topAnn) topAnn.textContent = t.topAnnouncement;
         if (subTag) subTag.textContent = t.subTag;
         if (navAccount) navAccount.textContent = t.account;
         if (navDaily) navDaily.textContent = t.dailySub;
         if (searchInp) searchInp.placeholder = t.searchPlaceholder;
+        if (mobSearchInp) mobSearchInp.placeholder = t.searchPlaceholder;
         if (floatArr) floatArr.textContent = t.riderMoving;
         if (floatBtn) floatBtn.textContent = t.viewCart;
+        if (bnavHome)
+          bnavHome.textContent =
+            lang === "hi" ? "होम" : lang === "mr" ? "मुख्य" : "Home";
+        if (bnavCat)
+          bnavCat.textContent =
+            lang === "hi"
+              ? "श्रेणियां"
+              : lang === "mr"
+                ? "श्रेणी"
+                : "Categories";
+        if (bnavParchi)
+          bnavParchi.textContent =
+            lang === "hi" ? "पर्ची" : lang === "mr" ? "यादी" : "Smart List";
+        if (bnavMilk)
+          bnavMilk.textContent =
+            lang === "hi" ? "दूध आदत" : lang === "mr" ? "दूध" : "6 AM Milk";
+        if (bnavAcc) bnavAcc.textContent = t.account;
 
         renderView();
         showToast(
